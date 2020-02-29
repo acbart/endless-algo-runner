@@ -1,4 +1,4 @@
-importScripts("/coding-2-try-phaser-jskripchuk/devprecache-manifest.bfdc4de57728113405a97f2361f4d735.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/coding-2-try-phaser-jskripchuk/alphaprecache-manifest.b1a2f061d20a51b1a53042852501c95f.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 /**
  * You should only modify this, if you know what you are doing.
