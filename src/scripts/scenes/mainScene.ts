@@ -9,6 +9,8 @@ export default class MainScene extends Phaser.Scene {
 
   create() {
     this.exampleObject = new ExampleObject(this, 0, 0);
+    this.add.text(0,0,"NUT");
+    this.scene.start("Scene2")
   }
 
   update() {
