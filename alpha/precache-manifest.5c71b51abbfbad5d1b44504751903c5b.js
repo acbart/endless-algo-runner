@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "deec73c79c02e771f5fe18be9c63cf89",
+    "revision": "6f0ee86fc49e618d85e209ba2d5fd6ba",
     "url": "/coding-2-try-phaser-jskripchuk/alphaassets/citations.md"
   },
   {
@@ -24,6 +24,34 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coding-2-try-phaser-jskripchuk/alphaassets/images/ship3.png"
   },
   {
+    "revision": "a52e983d427094f208b9a471b649adbb",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/images/wall.png"
+  },
+  {
+    "revision": "742fdebdf6977d4443c673ed6be8ef47",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/parallax_forest_pack/layers/parallax-forest-back-trees.png"
+  },
+  {
+    "revision": "90eeed8bb9545a3dda46c2b04cf44c1b",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/parallax_forest_pack/layers/parallax-forest-front-trees.png"
+  },
+  {
+    "revision": "6abd59acb4c8ed72b3eecac698aeb52d",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/parallax_forest_pack/layers/parallax-forest-lights.png"
+  },
+  {
+    "revision": "953f7a727d7d4725a4b4fee91071d3f2",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/parallax_forest_pack/layers/parallax-forest-middle-trees.png"
+  },
+  {
+    "revision": "a92647b14ad7375662d1659c238ea50a",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/parallax_forest_pack/license.txt"
+  },
+  {
+    "revision": "e3f3ac04a39ad40e7e7c7c7e2e579329",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/parallax_forest_pack/parallax-forest.psd"
+  },
+  {
     "revision": "ea801e18a4f14b0c4740b555536b414e",
     "url": "/coding-2-try-phaser-jskripchuk/alphaassets/spritesheets/explosion.png"
   },
@@ -40,15 +68,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coding-2-try-phaser-jskripchuk/alphaassets/spritesheets/ship3.png"
   },
   {
-    "revision": "6ccb6b1b41d42c754102",
-    "url": "/coding-2-try-phaser-jskripchuk/alphagen.main.50fe1d53e9ef0ae58cad.bundle.js"
+    "revision": "c4aec5c60e84e1b1d9e9382150351892",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/spritesheets/unicorn.png"
+  },
+  {
+    "revision": "e89ce9ffe4cd441cb4ad",
+    "url": "/coding-2-try-phaser-jskripchuk/alphagen.main.ecc0bcf87b4b377172d5.bundle.js"
   },
   {
     "revision": "201b65bee9df6270f739",
     "url": "/coding-2-try-phaser-jskripchuk/alphagen.vendors.a047ee0740c7d21714d9.bundle.js"
   },
   {
-    "revision": "b4b23ed07dfecf92b8d8bbe6b82ebb2a",
+    "revision": "026e4ba7bf292715b18be95fd61a245e",
     "url": "/coding-2-try-phaser-jskripchuk/alphaindex.html"
   },
   {
