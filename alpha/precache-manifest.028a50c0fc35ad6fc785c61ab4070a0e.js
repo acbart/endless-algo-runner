@@ -1,5 +1,21 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
+    "revision": "9f1fe6ca76abbdb774c8ce4388d61282",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/audio/Hit_Hurt2.wav"
+  },
+  {
+    "revision": "a0aba9e66fc00b2ae01482ca44c9fd46",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/audio/Jump2.wav"
+  },
+  {
+    "revision": "e8020345f439ccc82ba463a31da34b04",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/audio/hurt.mp3"
+  },
+  {
+    "revision": "eefbefd1280c24d8b05053b644d16338",
+    "url": "/coding-2-try-phaser-jskripchuk/alphaassets/audio/jump.mp3"
+  },
+  {
     "revision": "6f0ee86fc49e618d85e209ba2d5fd6ba",
     "url": "/coding-2-try-phaser-jskripchuk/alphaassets/citations.md"
   },
@@ -72,15 +88,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coding-2-try-phaser-jskripchuk/alphaassets/spritesheets/unicorn.png"
   },
   {
-    "revision": "2b987854bb028a219a75",
-    "url": "/coding-2-try-phaser-jskripchuk/alphagen.main.46004f441cbbbc63f643.bundle.js"
+    "revision": "1f62cb2a18fed3edbbd4",
+    "url": "/coding-2-try-phaser-jskripchuk/alphagen.main.0f285ce79cab991096d6.bundle.js"
   },
   {
     "revision": "201b65bee9df6270f739",
     "url": "/coding-2-try-phaser-jskripchuk/alphagen.vendors.a047ee0740c7d21714d9.bundle.js"
   },
   {
-    "revision": "c4f8e523537c7f7d987ec14cdb142de8",
+    "revision": "99c3e3e1968ab8002ff5beaf0dd7c8ed",
     "url": "/coding-2-try-phaser-jskripchuk/alphaindex.html"
   },
   {
