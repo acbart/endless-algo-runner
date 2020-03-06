@@ -72,15 +72,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coding-2-try-phaser-jskripchuk/alphaassets/spritesheets/unicorn.png"
   },
   {
-    "revision": "e89ce9ffe4cd441cb4ad",
-    "url": "/coding-2-try-phaser-jskripchuk/alphagen.main.ecc0bcf87b4b377172d5.bundle.js"
+    "revision": "2b987854bb028a219a75",
+    "url": "/coding-2-try-phaser-jskripchuk/alphagen.main.46004f441cbbbc63f643.bundle.js"
   },
   {
     "revision": "201b65bee9df6270f739",
     "url": "/coding-2-try-phaser-jskripchuk/alphagen.vendors.a047ee0740c7d21714d9.bundle.js"
   },
   {
-    "revision": "026e4ba7bf292715b18be95fd61a245e",
+    "revision": "c4f8e523537c7f7d987ec14cdb142de8",
     "url": "/coding-2-try-phaser-jskripchuk/alphaindex.html"
   },
   {
