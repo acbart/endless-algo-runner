@@ -404,15 +404,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/endless-algo-runner/alphafavicon.ico"
   },
   {
-    "revision": "2330b2de6f48f876303e",
-    "url": "/endless-algo-runner/alphagen.main.e453235ec7ff0db1fa6d.bundle.js"
+    "revision": "c074d6434e22d2b61913",
+    "url": "/endless-algo-runner/alphagen.main.10ee658ea1f73d665486.bundle.js"
   },
   {
     "revision": "201b65bee9df6270f739",
     "url": "/endless-algo-runner/alphagen.vendors.a047ee0740c7d21714d9.bundle.js"
   },
   {
-    "revision": "2e9701e60104a3202fffae20e7cc60de",
+    "revision": "537706b91b66d18e8532400f72d78d98",
     "url": "/endless-algo-runner/alphaindex.html"
   },
   {

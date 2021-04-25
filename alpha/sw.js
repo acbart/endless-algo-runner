@@ -1,4 +1,4 @@
-importScripts("/endless-algo-runner/alphaprecache-manifest.be29b4383b8d010a7949328742fedd63.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/endless-algo-runner/alphaprecache-manifest.c64babd1d65ecc672507d3eb559cf543.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 /**
  * You should only modify this, if you know what you are doing.
