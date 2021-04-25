@@ -1,9 +1,14 @@
 {
-  "name": "coding-2-try-phaser-jskripchuk",
+  "name": "endless-algo-runner",
   "version": "0.0.1",
-  "description": "Phaser 3 starter template for educational games, using TypeScript, webpack, and Github Pages.",
-  "homepage": "https://github.com/acbart/educational-phaser-game-template#readme",
+  "description": "Try to escape the collapsing underground complex, while dodging AlgoTutorBot.",
+  "homepage": "https://github.com/acbart/endless-algo-runner",
   "main": "index.js",
+  "game": {
+    "url": "endless-algo-runner",
+    "shortName": "AlgoRunner",
+    "name": "Endless AlgoRunner"
+  },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js",
@@ -26,12 +31,12 @@
     "starter"
   ],
   "author": {
-    "name": "Austin Cory Bart",
+    "name": "Austin Cory Bart, Jimmy Skripchuk",
     "url": "https://github.com/acbart"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/acbart/educational-phaser-game-template.git"
+    "url": "https://github.com/acbart/endless-algo-runner.git"
   },
   "template": {
     "name": "educational-phaser-game-template",

@@ -12,6 +12,7 @@ export default class MainGame extends Phaser.Scene {
   
   //Various Controls and Entities
   cursorKeys;
+  mouseButtons;
   gameSpeed;
   wallTimer: Phaser.Time.TimerEvent;
   unicorn: Unicorn;
@@ -26,6 +27,7 @@ export default class MainGame extends Phaser.Scene {
 
 
   gameOver: boolean;
+  gameOverWaiting: boolean;
 
   //Keeping track of score
   score: integer;
@@ -44,13 +46,19 @@ export default class MainGame extends Phaser.Scene {
 
   preload(){
     //Loading forest textures
-    let forest_path = "./assets/parallax_forest_pack/layers/parallax-forest-";
-    this.load.image("bg_back_trees",forest_path+"back-trees.png");
-    this.load.image("bg_front_trees",forest_path+"front-trees.png");
-    this.load.image("bg_middle_trees",forest_path+"middle-trees.png");
-    this.load.image("bg_lights",forest_path+"lights.png");
+    const background_path = "./assets/parallax_backgrounds/temple/";
+    this.load.image("bg_back_trees",background_path+"Background.png");
+    this.load.image("bg_middle_trees",background_path+"Arches.png");
+    this.load.image("bg_front_trees",background_path+"Pillars.png");
+
+    this.load.image("bg_lights",background_path+"Curls.png");
     this.load.image("wall_texture","./assets/images/wall.png")
     this.load.image("tree_texture", "./assets/images/tree.png");
+    this.load.image("bot_texture", "./assets/images/atb.png");
+    this.load.spritesheet("dancer_texture", "./assets/spritesheets/atb_dance.png", {
+      frameWidth: 40,
+      frameHeight: 38
+    });
 
     //Sparkle Effects
     this.load.image('sparkle', './assets/images/sparkle.png');
@@ -58,12 +66,12 @@ export default class MainGame extends Phaser.Scene {
     this.load.audio("jump", "./assets/audio/jump.mp3");
     this.load.audio("hurt", "./assets/audio/hurt.mp3");
     this.load.audio("advance", "./assets/audio/Powerup3.mp3");
-    this.load.audio("music", "./assets/audio/music.mp3");
+    this.load.audio("music", "./assets/audio/kernel_panic.mp3");
 
     //Unicorn texture
-    this.load.spritesheet("unicorn", "./assets/spritesheets/unicorn.png", {
-      frameWidth: 140,
-      frameHeight: 140
+    this.load.spritesheet("unicorn", "./assets/spritesheets/running_bigger.png", {
+      frameWidth: 128,
+      frameHeight: 128
     });
   }
 
@@ -71,14 +79,14 @@ export default class MainGame extends Phaser.Scene {
     let bgWidth = this.scale.width;
     let bgHight = this.scale.height;
     this.bgBackTrees = this.add.tileSprite(0,0,bgWidth,bgHight,"bg_back_trees");
-    this.bgLights = this.add.tileSprite(0,0,bgWidth,bgHight,"bg_lights")
+    //this.bgLights = this.add.tileSprite(0,0,bgWidth,bgHight,"bg_lights")
     this.bgMiddleTrees = this.add.tileSprite(0,0,bgWidth,bgHight,"bg_middle_trees");
-    this.bgFrontTrees = this.add.tileSprite(0,0,bgWidth,bgHight,"bg_front_trees");
+    //this.bgFrontTrees = this.add.tileSprite(0,0,bgWidth,bgHight,"bg_front_trees");
 
     this.bgBackTrees.setOrigin(0,0);
-    this.bgLights.setOrigin(0,0);
+    //this.bgLights.setOrigin(0,0);
     this.bgMiddleTrees.setOrigin(0,0);
-    this.bgFrontTrees.setOrigin(0,0);
+    //this.bgFrontTrees.setOrigin(0,0);
   }
 
   initParticles(){
@@ -100,28 +108,32 @@ export default class MainGame extends Phaser.Scene {
     this.jumpSound = this.sound.add("jump");
     this.advanceSound = this.sound.add("advance");
     this.music = this.sound.add("music");
-    this.music.play();
+    this.music.play({loop: true, rate: .75});
+    console.log(this.music.totalRate);
   }
 
   initUnicorn(){
     this.anims.create({
       key: "unicorn_anim",
-      frames: this.anims.generateFrameNumbers("unicorn", {start: 0, end: 4}),
+      frames: this.anims.generateFrameNumbers("unicorn", {start: 0, end: 12}),
       frameRate:12*this.gameSpeed,
       repeat: -1
     });
 
     
-    this.unicorn = new Unicorn(this,0.5,this.jumpSound);
+    this.unicorn = new Unicorn(this,1,this.jumpSound);
     this.add.existing(this.unicorn);
     this.physics.add.existing(this.unicorn);
     this.unicorn.scale = 0.5;
     
     this.unicorn.play("unicorn_anim");
     this.unicorn.setOrigin(0,0);
-    this.unicorn.setSize(this.unicorn.displayWidth, this.unicorn.displayHeight/2);
-    this.unicorn.setOffset(this.unicorn.displayWidth/2+10,this.unicorn.displayHeight);
+    this.unicorn.setSize(this.unicorn.displayWidth, this.unicorn.displayHeight);
+    this.unicorn.setOffset(this.unicorn.displayWidth/2 - 10,this.unicorn.displayHeight);
     this.unicorn.setCollideWorldBounds(true);
+
+    this.input.on('pointerdown', this.unicorn.jumpTowards.bind(this.unicorn));
+    this.input.on('pointerup', this.unicorn.stopJumpingTowards.bind(this.unicorn));
   }
 
   initText(){
@@ -138,6 +150,13 @@ export default class MainGame extends Phaser.Scene {
       allowGravity: false
     });
 
+    this.anims.create({
+      key: "dancer_anim",
+      frames: this.anims.generateFrameNumbers("dancer_texture", {start: 0, end: 4}),
+      frameRate: 12*this.gameSpeed,
+      repeat: -1
+    });
+
     this.physics.add.collider(this.unicorn,this.wallGroup, this.wallCollide, this.wallCollide, this);
   }
 
@@ -150,18 +169,19 @@ export default class MainGame extends Phaser.Scene {
       loop:true
     })
 
-    this.scoreCounter = this.time.addEvent({
+    /*this.scoreCounter = this.time.addEvent({
       delay: 500,
       callback: this.incrementScore, 
       callbackScope: this, 
       loop:true
-    })
+    })*/
   }
   
 
   create() {
     this.gameSpeed = 1;
     this.gameOver = false;
+    this.gameOverWaiting = false;
     this.score = 1;
     this.cursorKeys = this.input.keyboard.createCursorKeys();
     this.initBackground();
@@ -179,6 +199,7 @@ export default class MainGame extends Phaser.Scene {
     this.sparkleEmitter.setSpeed(100);
     this.gameOver = true;
   }
+
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
@@ -192,13 +213,13 @@ export default class MainGame extends Phaser.Scene {
   }
 
   generateWall(above){
-    let ypos = 100
+    let ypos = 120;
 
     if(above){
       ypos = 0;
     }
 
-    var wall = new Wall(350,ypos,this,1);
+    var wall = new Wall(350,ypos,this,1, this.incrementScore.bind(this));
     this.add.existing(wall);
     this.physics.add.existing(wall);
     this.wallGroup.add(wall);
@@ -209,13 +230,15 @@ export default class MainGame extends Phaser.Scene {
     }
   }
 
-  incrementScore(){
-    this.score = this.score+1;
+  incrementScore(amount: integer){
+    this.score = this.score+amount;
 
     if(this.score % 20 == 0){
       this.gameSpeed = this.gameSpeed+0.1;
       this.advanceSound.play();
       this.sparkleEmitter.setFrequency(this.sparkleEmitter.frequency*0.5);
+      let rate = .75 + .25 * (Math.min(50, this.score) / 50);
+      this.music.play({loop: true, rate: rate})
     }
   }
 
@@ -229,9 +252,9 @@ export default class MainGame extends Phaser.Scene {
   scrollBackground(){
     let scrollSpeed = 3*this.gameSpeed; //Speed of the front layer 
     this.bgBackTrees.tilePositionX += 0.1*scrollSpeed;
-    this.bgLights.tilePositionX += 0.2*scrollSpeed;
+    //this.bgLights.tilePositionX += 0.2*scrollSpeed;
     this.bgMiddleTrees.tilePositionX += 0.5*scrollSpeed;
-    this.bgFrontTrees.tilePositionX += scrollSpeed;
+    //this.bgFrontTrees.tilePositionX += scrollSpeed;
   }
 
   update() {
@@ -250,15 +273,33 @@ export default class MainGame extends Phaser.Scene {
       this.wallUpdate();
       this.unicorn.handleJumping(this.cursorKeys,this.scale);
 
-    }else{
+    } else if (!this.gameOverWaiting) {
+      this.setGameOver();
+    } else {
+      //Restart when we press R
+      var keyObj = this.input.keyboard.addKey("R");
+      if(keyObj.isDown){
+        this.restartGame();
+      }
+    }
+  }
 
+  restartGame() {
+    this.scoreText.destroy();
+    this.input.off('pointerdown');
+    this.unicorn.destroy();
+    this.create();
+  }
+
+  setGameOver() {
+      console.log("FIRING");
       //Hold the presses
       this.music.stop();
       this.scoreText.setText("Final Score: "+this.score.toString()+" \nPress R to Restart");
-      
+
       //Destroy timers
       this.wallTimer.destroy();
-      this.scoreCounter.destroy();
+      //this.scoreCounter.destroy();
 
       this.unicorn.anims.pause();
       this.unicorn.setVelocityX(0);
@@ -269,18 +310,16 @@ export default class MainGame extends Phaser.Scene {
       this.unicorn.setCollideWorldBounds(false);
 
       //Stop all the walls
-      for(var i =0; i < this.wallGroup.getChildren().length; i++){
+      for(var i =0; i < this.wallGroup.getChildren().length; i++) {
         var wall = this.wallGroup.getChildren()[i];
         wall.disableBody();
+        wall.destroy();
       }
 
-      //Restart when we press R
-      var keyObj = this.input.keyboard.addKey("R");
-      if(keyObj.isDown){
-        this.scoreText.destroy();
-        this.create();
-      }
-    }
-
+      //this.input.mouse.stopListeners();
+      this.input.off('pointerdown');
+      this.input.off('pointerup');
+      this.input.on('pointerdown', this.restartGame.bind(this));
+      this.gameOverWaiting = true;
   }
 }

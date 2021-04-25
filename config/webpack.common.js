@@ -2,9 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
-
-// TODO: Replace your game name here
-const myGameName = 'Educational Phaser Game Template';
+const package = require('../package.json');
 
 module.exports = {
   entry: ['./src/scripts/game.ts'],
@@ -32,11 +30,11 @@ module.exports = {
     }
   },
   plugins: [
-    new HtmlWebpackPlugin({ gameName: myGameName, template: 'src/index.html' }),
+    new HtmlWebpackPlugin({ gameName: package.game.name, template: 'src/index.html' }),
     new CopyWebpackPlugin([
       { from: 'src/assets', to: 'assets' },
       { from: 'config/pwa', to: '' },
-      { from: 'src/favicon.ico', to: '' }
+      { from: 'src/assets/icons/favicon.ico', to: '' }
     ]),
     new InjectManifest({
       swSrc: path.resolve(__dirname, 'pwa/sw.js')
