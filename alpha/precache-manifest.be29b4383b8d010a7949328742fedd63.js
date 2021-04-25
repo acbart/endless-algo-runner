@@ -24,6 +24,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/endless-algo-runner/alphaassets/audio/jump.mp3"
   },
   {
+    "revision": "20692cacc6910f3e0f3b85eed812e9b7",
+    "url": "/endless-algo-runner/alphaassets/audio/kernel_panic.mp3"
+  },
+  {
     "revision": "f3d8d9b16e3014a731e9ec8e0e338c92",
     "url": "/endless-algo-runner/alphaassets/audio/music.mp3"
   },
