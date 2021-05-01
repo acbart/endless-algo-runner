@@ -420,8 +420,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/endless-algo-runner/finalfavicon.ico"
   },
   {
-    "revision": "3c2c437bdb9bab07ae56",
-    "url": "/endless-algo-runner/finalgen.main.c3e2a411a8b327470b79.bundle.js"
+    "revision": "2e00afbc3c8968a2c2ee",
+    "url": "/endless-algo-runner/finalgen.main.2212329009809a3d8e30.bundle.js"
   },
   {
     "revision": "66f0490d869e8f9a34cc",
@@ -432,7 +432,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/endless-algo-runner/finalicons/icons-192.png"
   },
   {
-    "revision": "6248ba60022078137e86fe2811cef3fd",
+    "revision": "9632a091f851316d88da08c8a0365f20",
     "url": "/endless-algo-runner/finalindex.html"
   },
   {
