@@ -432,7 +432,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/endless-algo-runner/finalicons/icons-192.png"
   },
   {
-    "revision": "40a3409dfa748c1602e074a2c01af305",
+    "revision": "8a4a94f90f84c05214feed8813a25139",
     "url": "/endless-algo-runner/finalindex.html"
   },
   {
